@@ -1,3 +1,6 @@
+# Part of case-study #2: Microeconomics
+# Developers: Ivanova A., Gulakova Y., Ilyinykh T., Cherkashina D.
+
 import ru_local as ru
 import matplotlib.pyplot as plt
 
@@ -12,18 +15,18 @@ supplies = []
 
 
 def demand(p):
-    return a-b*p
+    return a - b * p
 
 
 def supply(p):
-    return c+t*p
+    return c + t * p
 
 
 def main():
-    i = 0
     price = float(input(ru.INITIAL_PRICE))
+    i = 0
 
-    price_e = (a-c)/(t+b)
+    price_e = (a - c) / (t + b)
     quantity_e = demand(price_e)
 
     print(ru.EQUILIBRIUM_PRICE, price_e, ru.EQUILIBRIUM_VOLUME, quantity_e)
@@ -38,7 +41,7 @@ def main():
             print(ru.CONSTANT_CYCLE)
             for j in range(2):
                 demands.append(supply(price))
-                price = (a - c - t*price)/b
+                price = (a - c - t * price) / b
                 supplies.append(supply(price))
                 prices.append(price)
 
@@ -46,7 +49,7 @@ def main():
             print(ru.UNWINDING_SPIRAL)
             for k in range(5):
                 demands.append(supply(price))
-                price = (a - c - t*price)/b
+                price = (a - c - t * price) / b
                 supplies.append(supply(price))
                 prices.append(price)
         else:
@@ -54,7 +57,7 @@ def main():
             while price != price_e:
                 i += 1
                 demands.append(supply(price))
-                price = (a - c - t*price)/b
+                price = (a - c - t * price) / b
                 supplies.append(supply(price))
                 prices.append(price)
 
@@ -72,12 +75,13 @@ def main():
     for m in demands:
         for n in supplies:
             if m == n:
-                plt.quiver(n, prices[supplies.index(n)], 0, prices[demands.index(m)]-prices[supplies.index(n)],
-                       angles='xy', scale_units='xy', scale=1, width=0.005) #рисуем вектор
+                plt.quiver(n, prices[supplies.index(n)], 0, prices[demands.index(m)] - prices[supplies.index(n)],
+                           angles='xy', scale_units='xy', scale=1, width=0.005)  # рисуем вектор
     for q in prices:
-        plt.quiver(demands[prices.index(q)], q, supplies[prices.index(q)]-demands[prices.index(q)], 0,
-               angles='xy', scale_units='xy', scale=1, width=0.005)
+        plt.quiver(demands[prices.index(q)], q, supplies[prices.index(q)] - demands[prices.index(q)], 0,
+                   angles='xy', scale_units='xy', scale=1, width=0.005)
     plt.show()
+
 
 if __name__ == '__main__':
     main()

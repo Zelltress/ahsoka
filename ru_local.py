@@ -7,7 +7,7 @@ SUPPLY_SLOPE_COEFF = 'функция вида QS = c-dp, где t - коэф. н
 INITIAL_PRICE = 'Начальная цена'
 EQUILIBRIUM_PRICE = 'Равновесная цена:'
 EQUILIBRIUM_VOLUME = 'Равновесный объём:'
-BALANCE_MODEL ='Модель находится в равновесии'
+BALANCE_MODEL = 'Модель находится в равновесии'
 IMBALANCE_MODEL = 'Модель не находится в равновесии'
 CONSTANT_CYCLE = 'Модель с постоянными колебаниями'
 TWISTING_SPIRAL = 'Модель с закручивающейся спиралью'
