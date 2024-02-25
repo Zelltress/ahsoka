@@ -1,5 +1,5 @@
 # Part of case-study #2: Microeconomics
-# Developers: Ivanova A., Gulakova Y., Ilyinykh T., Cherkashina D.
+# Developers: Ivanova A., Gulakova Y., Ilinykh T., Cherkashina D.
 
 import ru_local as ru
 import matplotlib.pyplot as plt
