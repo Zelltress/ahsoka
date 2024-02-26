@@ -25,6 +25,7 @@ def supply(p):
 def main():
     price = float(input(ru.INITIAL_PRICE))
     i = 0
+    price_begin = -1
 
     price_e = (a - c) / (t + b)
     quantity_e = demand(price_e)
@@ -33,6 +34,11 @@ def main():
 
     if price == price_e:
         print(ru.BALANCE_MODEL)
+        for d in range(100, 300):
+            demands.append(demand(d))
+            supplies.append(supply(d))
+            prices.append(d)
+            price_begin = price
 
     else:
         print(ru.IMBALANCE_MODEL)
@@ -69,17 +75,19 @@ def main():
     plt.xlabel(ru.PRODUCT_NUMBER)
     plt.plot(demands, prices)
     plt.plot(supplies, prices)
-    plt.scatter(demands, prices)
-    plt.scatter(supplies, prices)
 
-    for m in demands:
-        for n in supplies:
-            if m == n:
-                plt.quiver(n, prices[supplies.index(n)], 0, prices[demands.index(m)] - prices[supplies.index(n)],
-                           angles='xy', scale_units='xy', scale=1, width=0.005)
-    for q in range(len(prices)):
-        plt.quiver(demands[q], prices[q], supplies[q] - demands[q], 0,
-                   angles='xy', scale_units='xy', scale=1, width=0.005)
+    if price_begin != price_e:
+        plt.scatter(demands, prices)
+        plt.scatter(supplies, prices)
+
+        for m in demands:
+            for n in supplies:
+                if m == n:
+                    plt.quiver(n, prices[supplies.index(n)], 0, prices[demands.index(m)] - prices[supplies.index(n)],
+                               angles='xy', scale_units='xy', scale=1, width=0.005)
+        for q in range(len(prices)):
+            plt.quiver(demands[q], prices[q], supplies[q] - demands[q], 0,
+                       angles='xy', scale_units='xy', scale=1, width=0.005)
 
     plt.scatter(quantity_e, price_e)
     plt.show()
