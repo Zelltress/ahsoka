@@ -30,11 +30,11 @@ def main():
     if t == 0 and b == 0:
 
         if a == c:
-            print('Графики совпадают')
+            print(ru.OVERLAP)
         else:
-            print('Графики не пересекаются')
+            print(ru.NO_INTERSECTION)
     elif t+b == 0:
-        print('Нарушение закона спроса или закона предложения')
+        print(ru.LAW_VIOLATION)
 
     else:
         price_e = (a - c) / (t + b)
@@ -94,10 +94,10 @@ def main():
                 for n in supplies:
                     if m == n:
                         plt.quiver(n, prices[supplies.index(n)], 0, prices[demands.index(m)] - prices[supplies.index(n)],
-                               angles='xy', scale_units='xy', scale=1, width=0.005)
+                                   angles='xy', scale_units='xy', scale=1, width=0.005)
             for q in range(len(prices)):
                 plt.quiver(demands[q], prices[q], supplies[q] - demands[q], 0,
-                            angles='xy', scale_units='xy', scale=1, width=0.005)
+                           angles='xy', scale_units='xy', scale=1, width=0.005)
 
         plt.scatter(quantity_e, price_e)
         plt.show()
