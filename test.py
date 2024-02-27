@@ -134,11 +134,12 @@ def main():
                 for n in supplies:
                     if m == n:
                         plt.quiver(n, prices[supplies.index(n)], 0, prices[demands.index(m)] - prices[supplies.index(n)],
-                                   angles='xy', scale_units='xy', scale=1, width=0.005)
+                                   scale_units='xy', scale=1, width=0.005)
             for q in range(len(prices)):
                 plt.quiver(demands[q], prices[q], supplies[q] - demands[q], 0,
-                           angles='xy', scale_units='xy', scale=1, width=0.005)
+                           scale_units='xy', scale=1, width=0.005)
 
+        '''Drawing equilibrium point'''
         plt.scatter(quantity_e, price_e)
         plt.show()
 
