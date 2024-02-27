@@ -144,8 +144,8 @@ def main():
         plt.scatter(quantity_e, price_e)
         plt.show()
 
-    DataFrame = {k: v for k, v in zip(supplies, demands)}
-    Table = pd.DataFrame
+    df = pd.DataFrame(demands, prices)
+    print(df)
 
 
 if __name__ == '__main__':
