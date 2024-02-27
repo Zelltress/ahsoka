@@ -15,14 +15,30 @@ supplies = []
 
 
 def demand(p):
+    '''
+    Function, finding demand.
+    :param p: price of the product
+    :return: None
+    '''
+
     return a - b * p
 
 
 def supply(p):
+    '''
+    Function, finding supply.
+    :param p: price of the product
+    :return: None
+    '''
     return c + t * p
 
 
 def main():
+    '''
+    Main function.
+    :return: None
+    '''
+
     price = float(input(ru.INITIAL_PRICE))
     i = 0
     price_begin = float('-inf')
