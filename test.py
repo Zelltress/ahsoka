@@ -51,7 +51,10 @@ def main():
             print(ru.NO_INTERSECTION)
 
     elif t < 0 or b < 0:
-        print(ru.LAW_VIOLATION)
+        if t < 0:
+            print(ru.VIOLATION_DEMAND)
+        else:
+            print(ru.VIOLATION_SUPPLY)
 
     elif t == 0:
         print(ru.INELASTIC_SUPPLY)
@@ -67,7 +70,7 @@ def main():
             if quantity_e >= 0:
                 print(ru.EQUILIBRIUM_PRICE, 0, ru.EQUILIBRIUM_VOLUME, demand(0))
             else:
-                print(ru.EQUILIBRIUM_PRICE, 0, ru.EQUILIBRIUM_VOLUME, 0)  #??????
+                print(ru.ERROR_A)
 
         else:
             if quantity_e < 0:
