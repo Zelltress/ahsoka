@@ -42,9 +42,10 @@ def main():
 
     price = float(input(ru.INITIAL_PRICE))
     i = 0
-    price_begin = float('-inf')
+    save_price = float('-inf')
 
     if t == 0 and b == 0:
+        print(ru.VIOLATION_SUPPLY, ', ', ru.VIOLATION_DEMAND)
         if a == c:
             print(ru.OVERLAP)
         else:
@@ -52,9 +53,9 @@ def main():
 
     elif t < 0 or b < 0:
         if t < 0:
-            print(ru.VIOLATION_DEMAND)
-        else:
             print(ru.VIOLATION_SUPPLY)
+        else:
+            print(ru.VIOLATION_DEMAND)
 
     elif t == 0:
         print(ru.INELASTIC_SUPPLY)
@@ -80,12 +81,12 @@ def main():
 
         if price == price_e:
             print(ru.BALANCE_MODEL)
+            save_price = price
 
             for d in range(100, 300):
                 demands.append(demand(d))
                 supplies.append(supply(d))
                 prices.append(d)
-                price_begin = price
 
         else:
             print(ru.IMBALANCE_MODEL)
@@ -124,7 +125,7 @@ def main():
         plt.plot(demands, prices)
         plt.plot(supplies, prices)
 
-        if price_begin != price_e:
+        if save_price != price_e:
             plt.scatter(demands, prices)
             plt.scatter(supplies, prices)
 
