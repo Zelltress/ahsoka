@@ -49,7 +49,7 @@ def main():
         else:
             print(ru.NO_INTERSECTION)
 
-    elif t+b <= 0:
+    elif t < 0 or b < 0:
         print(ru.LAW_VIOLATION)
 
     else:
