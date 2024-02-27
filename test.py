@@ -82,7 +82,7 @@ def main():
         if price == price_e:
             print(ru.BALANCE_MODEL)
             save_price = price
-            print(i,  ru.NUMBER_CYCLES)
+            print(i, ru.NUMBER_CYCLES)
 
             for d in range(100, 300):
                 demands.append(demand(d))
