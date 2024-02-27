@@ -3,6 +3,7 @@
 
 import ru_local as ru
 import matplotlib.pyplot as plt
+import pandas as pd
 
 a = float(input(ru.NUMBER_CUSTOMERS))
 b = float(input(ru.DEMAND_SLOPE_COEFF))
@@ -45,7 +46,7 @@ def main():
     save_price = float('-inf')
 
     if t == 0 and b == 0:
-        print(ru.INELASTIC_SUPPLY, ', ', ru.INELASTIC_DEMAND)
+        print(ru.VIOLATION_SUPPLY, ', ', ru.VIOLATION_DEMAND)
         if a == c:
             print(ru.OVERLAP)
         else:
@@ -75,7 +76,7 @@ def main():
 
         else:
             if quantity_e < 0:
-                print(ru.EQUILIBRIUM_PRICE, a/b, ru.EQUILIBRIUM_VOLUME, 0)
+                print(ru.EQUILIBRIUM_PRICE, a / b, ru.EQUILIBRIUM_VOLUME, 0)
             else:
                 print(ru.EQUILIBRIUM_PRICE, price_e, ru.EQUILIBRIUM_VOLUME, quantity_e)
 
@@ -133,15 +134,21 @@ def main():
             for m in demands:
                 for n in supplies:
                     if m == n:
-                        plt.quiver(n, prices[supplies.index(n)], 0, prices[demands.index(m)] - prices[supplies.index(n)],
-                                   scale_units='xy', scale=1, width=0.005)
+                        plt.quiver(n, prices[supplies.index(n)], 0,
+                                   prices[demands.index(m)] - prices[supplies.index(n)],
+                                   angles='xy', scale_units='xy', scale=1, width=0.005)
             for q in range(len(prices)):
                 plt.quiver(demands[q], prices[q], supplies[q] - demands[q], 0,
-                           scale_units='xy', scale=1, width=0.005)
+                           angles='xy', scale_units='xy', scale=1, width=0.005)
 
-        '''Drawing equilibrium point'''
         plt.scatter(quantity_e, price_e)
         plt.show()
+
+    table = {
+        "Price": supplies,
+        "Quantity": demands,
+    }
+    print(pd.DataFrame(table))
 
 
 if __name__ == '__main__':
