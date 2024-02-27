@@ -25,25 +25,36 @@ def supply(p):
 def main():
     price = float(input(ru.INITIAL_PRICE))
     i = 0
-    price_begin = -1
+    price_begin = float('-inf')
 
     if t == 0 and b == 0:
-
         if a == c:
             print(ru.OVERLAP)
         else:
             print(ru.NO_INTERSECTION)
-    elif t+b == 0:
+
+    elif t+b <= 0:
         print(ru.LAW_VIOLATION)
 
     else:
         price_e = (a - c) / (t + b)
         quantity_e = demand(price_e)
 
-        print(ru.EQUILIBRIUM_PRICE, price_e, ru.EQUILIBRIUM_VOLUME, quantity_e)
+        if price_e < 0:
+            if quantity_e >= 0:
+                print(ru.EQUILIBRIUM_PRICE, 0, ru.EQUILIBRIUM_VOLUME, demand(0))
+            else:
+                print(ru.EQUILIBRIUM_PRICE, 0, ru.EQUILIBRIUM_VOLUME, 0)  #??????
+
+        else:
+            if quantity_e < 0:
+                print(ru.EQUILIBRIUM_PRICE, a/b, ru.EQUILIBRIUM_VOLUME, 0)
+            else:
+                print(ru.EQUILIBRIUM_PRICE, price_e, ru.EQUILIBRIUM_VOLUME, quantity_e)
 
         if price == price_e:
             print(ru.BALANCE_MODEL)
+
             for d in range(100, 300):
                 demands.append(demand(d))
                 supplies.append(supply(d))
@@ -68,6 +79,7 @@ def main():
                     price = (a - c - t * price) / b
                     supplies.append(supply(price))
                     prices.append(price)
+
             else:
                 print(ru.TWISTING_SPIRAL)
                 while price != price_e:
