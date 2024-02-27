@@ -45,7 +45,7 @@ def main():
     save_price = float('-inf')
 
     if t == 0 and b == 0:
-        print(ru.VIOLATION_SUPPLY, ', ', ru.VIOLATION_DEMAND)
+        print(ru.INELASTIC_SUPPLY, ', ', ru.INELASTIC_DEMAND)
         if a == c:
             print(ru.OVERLAP)
         else:
