@@ -30,6 +30,7 @@ def supply(p):
     :param p: price of the product
     :return: None
     '''
+
     return c + t * p
 
 
@@ -51,6 +52,12 @@ def main():
 
     elif t < 0 or b < 0:
         print(ru.LAW_VIOLATION)
+
+    elif t == 0:
+        print(ru.INELASTIC_SUPPLY)
+
+    elif b == 0:
+        print(ru.INELASTIC_DEMAND)
 
     else:
         price_e = (a - c) / (t + b)
