@@ -145,7 +145,8 @@ def main():
         plt.show()
 
     df = pd.DataFrame(demands, prices)
-    print(df)
+    df1 = df.head(5)
+    print(df1)
 
 
 if __name__ == '__main__':
