@@ -120,6 +120,10 @@ def main():
 
                 print(i, ru.NUMBER_CYCLES)
 
+            df = pd.DataFrame(demands, prices)
+            df1 = df.head(5)
+            print(df1)
+
         plt.figure()
         plt.title(ru.MODEL_NAME)
         plt.ylabel(ru.PRODUCT_PRICE)
@@ -144,9 +148,6 @@ def main():
         plt.scatter(quantity_e, price_e)
         plt.show()
 
-    df = pd.DataFrame(demands, prices)
-    df1 = df.head(5)
-    print(df1)
 
 
 if __name__ == '__main__':
